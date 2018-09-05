@@ -1,0 +1,35 @@
+{
+  "variables": {
+    "do_token": ""
+  },
+  "builders": [
+    {
+      "droplet_name": "prometheus",
+      "snapshot_name": "prometheus",
+      "type": "digitalocean",
+      "ssh_username": "root",
+      "api_token": "{{ user `do_token` }}",
+      "image": "ubuntu-18-04-x64",
+      "region": "lon1",
+      "size": "512mb"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "files/prometheus.service",
+      "destination": "/etc/systemd/system/prometheus.service"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/install_prometheus.sh"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "files/prometheus.yml",
+      "destination": "/etc/prometheus/prometheus.yml"
+    }
+  ]
+}
