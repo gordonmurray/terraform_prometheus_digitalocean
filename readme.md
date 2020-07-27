@@ -1,7 +1,7 @@
-Terraform Consul DigitalOcean
+Terraform Prometheus DigitalOcean
 ---------------------------
 
-A project to set up a small Consul cluster on DigitalOcean, using Terraform.
+A project to set up a small Prometheus instance on DigitalOcean, using Terraform.
 
 The images used to create the Droplets are premade using Packer.
 
